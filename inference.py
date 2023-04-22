@@ -48,4 +48,4 @@ if __name__ == "__main__":
     args = parse_args()
     image = pipe(args.prompt, num_inference_steps=args.steps, guidance_scale=args.scale).images[0]
 
-    image.save(f"{os.environ.get('TRAINML_OUTPUT_PATH')}/{args.uid}.png")
+    image.save(f"{os.environ.get('TRAINML_OUTPUT_PATH')}/output.png")
