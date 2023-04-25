@@ -11,6 +11,8 @@ logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
 model_id = os.environ.get("TRAINML_CHECKPOINT_PATH")
+print ("MODEL SAVE PATH IS:")
+print(os.environ.get('TRAINML_OUTPUT_PATH'))
 pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16).to("cuda")
 
 
