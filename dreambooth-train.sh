@@ -36,7 +36,7 @@ sed -i 's/disable=not accelerator.is_local_main_process/disable=False/' train_dr
 sed -i 's/accelerator.state, main_process_only=False/accelerator.state/' train_dreambooth.py
 
 echo "Listing data folders: root"
-ls -al ${TRAINML_DATA_PATH}/instance-data
+ls -al ${TRAINML_DATA_PATH}/
 echo "listinf data folder: instance"
 ls -al ${TRAINML_DATA_PATH}/instance-data
 echo "listinf data folder: reg"
