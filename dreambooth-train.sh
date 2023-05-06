@@ -4,11 +4,11 @@ for i in "$@"; do
   case $i in
     -s=*|--steps=*)
       STEPS="${i#*=}"
-      shift 
+      shift
       ;;
     -i=*|--images=*)
       IMAGES="${i#*=}"
-      shift 
+      shift
       ;;
     -*|--*)
       echo "Unknown option $i"
@@ -20,7 +20,7 @@ for i in "$@"; do
 done
 
 
-#cp -r ${TRAINML_DATA_PATH}/* . 
+#cp -r ${TRAINML_DATA_PATH}/* .
 
 cd diffusers/examples/dreambooth
 
@@ -35,6 +35,12 @@ sed -i 's/if accelerator.is_local_main_process:/if True:/' train_dreambooth.py
 sed -i 's/disable=not accelerator.is_local_main_process/disable=False/' train_dreambooth.py
 sed -i 's/accelerator.state, main_process_only=False/accelerator.state/' train_dreambooth.py
 
+echo "Listing data folders: root"
+ls -al ${TRAINML_DATA_PATH}/instance-data
+echo "listinf data folder: instance"
+ls -al ${TRAINML_DATA_PATH}/instance-data
+echo "listinf data folder: reg"
+ls -al ${TRAINML_DATA_PATH}/regularization-data
 ## Run training
 python train_dreambooth.py \
 --pretrained_model_name_or_path=${TRAINML_CHECKPOINT_PATH} \
